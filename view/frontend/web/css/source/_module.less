@@ -1,0 +1,489 @@
+& when (@media-common = true) {
+  .payment-method {
+    &._active {
+      background-color: transparent;
+    }
+
+    .payment-method-title {
+      border-left: 0;
+      border-right: 0;
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+      min-height: 43px;
+
+      &  > label {
+        flex-basis: auto;
+        font-size: 17px;
+      }
+
+      .accepted_cc {
+        margin-left: 2rem;
+        display: flex;
+        align-items: center;
+      
+        .worldpay_cc_we_accept {
+          margin-right: 10px;
+          line-height: 30px;
+          vertical-align: top;
+          display: inline-block;
+          font-size: 17px;
+          min-width: 85px;
+        }
+          
+        .paymentoptions-icon-wrapper > div {
+          display: inline-block;
+          margin: 0 1px;
+      
+          & > img {
+            max-width: 69px;
+            height: 30px;
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+
+    .payment-method-content {
+
+      section.container.websdkField {
+        align-items: initial;
+        justify-content: left;
+        height: auto;
+
+        .card {
+          .card__field.card__field--pan, 
+          .card-name {
+            margin-bottom: 20px;
+          }
+          .card__type {
+            margin-bottom: 0;
+           }
+          .card__field {
+            border-bottom: 1px solid #cccccc;
+            margin-bottom: .5rem;
+            position: relative;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            max-width:300px;
+          }
+          .websdkInput {
+            display: block;
+          }
+          .save__card input.savecard {
+            vertical-align: middle;
+            top: 5px;
+          }
+          .card__field--label {
+            font-size: 13px;
+            color: black;
+            line-height: .8rem;
+            margin-top: 1rem;
+            letter-spacing: 1px;
+          }
+          .card__field--label span {
+            line-height: 30px;
+            vertical-align: top;
+            display: inline-block;
+            font-size: 1.6rem;
+          }
+          .checkout.visa .label .type:before {
+            content: "(visa)";
+          }
+          .checkout.mastercard .label .type:before {
+            content: "(master card)";
+          }
+          .checkout.amex .label .type:before {
+            content: "(american express)";
+          }
+          .checkout.diners .label .type:before {
+            content: "(diners)";
+          }
+          .checkout.discover .label .type:before {
+            content: "(discover)";
+          }
+          .checkout.jcb .label .type:before {
+            content: "(jcb)";
+          }
+          .checkout.maestro .label .type:before {
+            content: "(maestro)";
+          }
+          .card__type {
+          
+          }
+          .card__field--cvv,
+          .card__field--expiry {
+            height: 1.5rem;
+          }
+          .card__field--cvv {
+            width: 50px;
+          }
+          .expiry-cvv {
+            display: block;
+          }
+          .expiry-cvv .first,
+          .expiry-cvv .last {
+            max-width: 300px;
+            margin-bottom: 20px;  
+          }
+          .expiry-cvv .last {
+            margin-bottom: 0px;  
+          }
+          .expiry-cvv label {
+            background: url(../img/arrow.svg) no-repeat center right;
+          }
+
+          .expiry-cvv .first .card__field--label {
+            width: 50px;
+          }
+          .expiry-cvv .last {
+            width: 40%;
+          }
+          .card__field--expiry {
+            width: 65px;
+          }
+          .card__field.is-onfocus {
+            border-bottom: 1px solid #cccccc;
+          }
+          .card__field.is-empty {
+            border-color: orange;
+          }
+          .card__field.is-valid {
+            border-color: green;
+          }
+          .card__field.is-invalid {
+            
+          }
+          .card__field.card__field--pan input {
+            font-size: 1.75rem;
+          }
+          .card__field:last-child {
+            margin-bottom: 0;
+          }
+          .checkout .card__submit {
+            position: relative;
+            cursor: pointer;
+            right: 0px;
+            bottom: 0px;
+            width: auto;
+            display: block;
+            outline: 0;
+            border: 0;
+            outline: 0;
+            font-size: 13px;
+            line-height: 1.5rem;
+            font-weight: bold;
+            padding: 1rem 2rem;
+            transition: background 0.3s ease;
+            margin-top: 1.25rem;
+          }
+          
+          .checkout.is-valid .card__submit,
+          .card__form .is-valid .card__submit {
+            background: green;
+          }
+
+          &.cvv {
+            min-height: auto;
+            width: 16.25rem;
+          }
+          
+          .card__form .card__submit:focus,
+          .card__form .card__submit:hover {
+            background-color: #ccc;
+          }
+        }
+      }
+    }
+
+    .container {
+      width: auto !important;
+    }
+
+    #worldpay_cc-newcard-form, 
+    #worldpay_cc-savedcard-form {
+      top: 0;
+      margin: 2rem 0 1.25rem 0;
+      width: auto;
+      box-shadow: none;
+      padding-top: 0;
+      height: auto;
+    }
+
+    #worldpay_cc-newcard-form {
+      .checkout-payment-method {
+        .ccard {
+          .select,
+          .name .input-text {
+            width: 225px;
+          }
+        }
+        .cvv .control .saved-cvv-number {
+          width: 55px;
+        } 
+      }
+
+      .card-name input#card-name {
+        font: 400 16px Arial;
+        opacity: .9;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        padding: 0;
+       }
+    }
+
+    #worldpay_cc-savedcard-form {
+
+      h4 {
+        display: none;
+      }
+
+      .savedcard-payment-method {
+        .savecc .control .card__field--label {
+          position: relative;
+          top: 0.5rem;
+        }
+      }
+
+      .container-cvv {
+        padding-bottom: 0px;
+        min-height:auto;
+        padding: 0 0 1.25rem 0;
+       }
+        
+       section.card.cvv {
+        background: transparent;
+        box-shadow: none;
+        margin-left: 1rem;
+       }
+
+    }
+  }
+  
+  .checkout-billing-address {
+    margin: 2rem 0 2rem 0;
+
+    .billing-address-details {  
+      button {
+        margin-top: 2rem;
+        padding: 0.8rem 1.5rem;
+        span {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+
+
+
+  .container-cvv {
+    min-height: 15rem;
+    padding: 3rem 0;
+    
+    .card.cvv {
+      padding: 10px 0px;
+      height: 60px;
+      width: 180px;
+  
+      .card__field--cvv {
+        width: 65px;
+      }
+    }
+  }
+
+  .token {
+    text-align: center;
+    color: #fff;
+    max-width: 100%;
+    transition: all 0.3s linear 1s;
+    display: flex;
+    justify-content: center;
+  
+    p {
+      overflow: auto;
+      margin: 0;
+      font-size: 0.425rem;
+      border-radius: 5px;
+      text-align: center;
+      max-width: 26.75rem;
+      display: inline-block;
+      word-wrap: break-word;
+      line-height: 0.8rem;
+      padding: 0.2rem;
+      height: fit-content;
+  
+      &.success {
+        background: green;
+      }
+  
+      &.error {
+        background: red;
+      }
+    }
+  }
+
+}
+
+// Tablet
+& when (@media-target = 'desktop'), (@media-target = 'all') {
+  @media only screen and (min-width: @screen__m) and (max-width: (@screen__xl - 1)) {
+
+    .payment-method {  
+      .payment-method-title {
+        border-left: 0;
+        &  > label {
+          flex-basis: auto;
+        }
+      }
+    }
+  }
+}
+
+// Desktop
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .payment-method {  
+    .payment-method-title {
+      border-left: 0;
+      &  > label {
+        flex-basis: auto;
+      }
+    }
+  }
+}
+
+
+
+/*
+// REDUNDENT STYLES?
+// TODO: Remove 
+
+.ccnumber_withcardtype {
+    position: relative;
+}
+span.cc-card-type {
+    position: absolute;
+    left: 228px;
+    top: 0px;
+}
+.ach-block {
+   font-weight: 600; 
+}
+.payment-logo-wrapper {
+    margin: 0 auto;
+}
+.payment-logo-wrapper img {
+    width: 180px;
+    max-width: 180px;
+}
+.payment-method-cc-form .fieldset:last-child {
+    margin-bottom: 5px;
+}
+.payment-method-cc-form .payment_cc_number {
+    background: url('../images/cc/cc-locker.png') transparent no-repeat top right;
+    background-size: 30px;
+}
+.payment-method-cc-form .field-tooltip .field-tooltip-action:before {
+    content: '';
+    background: url('../images/cc/cc-cvc.png') transparent no-repeat top right;
+    background-size: 30px;
+    width: 30px;
+    height: 30px;
+}
+.clear:hover {
+  background-color: white;
+}
+.clear {
+  background: transparent;
+  position: absolute;
+  cursor: pointer;
+  left: 130px;
+  bottom: -5rem;
+  width: 40%;
+  background-color: grey;
+  display: block;
+  outline: 0;
+  border: 0;
+  margin-left: -120px;
+  color: black;
+  outline: 0;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  border-radius: 1.875rem;
+  font-weight: bold;
+  padding: 1rem 0;
+  transition: background 0.3s ease;
+}
+#worldpay_cc_cc_type_div {
+    display: none;
+}
+.cc-card-type:before {
+    background: url('../images/cc/credit-card-icons.png') no-repeat center center;
+    border: 0 solid #cccccc;
+    content: "";
+    display: none;
+    overflow: hidden;
+    width: 44px;
+    height: 21px;
+    background-size: 339px 20px;
+    position: relative;
+    top: 5px;
+    left: 5px;
+}
+.is_visa .cc-card-type:before {
+    display: inline-block;
+    background-position-x: -43px;
+}
+.is_dankort .cc-card-type:before {
+    background: url('../images/cc/dankort-ssl.png') no-repeat center center;
+    display: inline-block;
+    background-position-x: 0;
+}
+.is_mastercard .cc-card-type:before {
+    display: inline-block;
+    background-position-x: 0;
+}
+.is_discover .cc-card-type:before {
+    display: inline-block;
+    background-position-x: -87px;
+}
+.is_amex .cc-card-type:before {
+    display: inline-block;
+    background-position-x: -131px;
+}
+.is_unionpay .cc-card-type:before {
+    display: inline-block;
+    background-position-x: -177px;
+}
+.is_jcb .cc-card-type:before {
+    display: inline-block;
+    background-position-x: -298px;
+}
+.is_diners .cc-card-type:before {
+    display: inline-block;
+    background-position-x: -214px;
+}
+.is_maestro .cc-card-type:before {
+    display: inline-block;
+    background-position-x: -256px;
+}
+.payment-titlelogo-wrapper {
+    display: flex;
+}
+.payment-title-wrapper .step-title {
+    margin: 0;
+    padding-bottom: 5px;
+    font-weight: bold;
+    font-size: 16px;
+}
+.payment-title-wrapper p {
+    font-style: italic;
+    padding: 0;
+    margin-bottom: 23px;
+}
+.payment-method .paymentmethods-radio-wrapper .mage-error[generated] {
+    position: absolute;
+    margin-top: 0px;
+}
+*/

@@ -28,7 +28,6 @@ var config = {
         '*': {
           
             "Magento_Checkout/template/payment.html": "Sapient_AccessWorldpay/template/payment.html",
-            "Magento_Checkout/template/payment-methods/list.html": "Sapient_AccessWorldpay/template/payment-methods/list.html",
             newcard : "Sapient_AccessWorldpay/js/newcard",
             "validation": "mage/validation/validation",
             websdk: sdkJs,
