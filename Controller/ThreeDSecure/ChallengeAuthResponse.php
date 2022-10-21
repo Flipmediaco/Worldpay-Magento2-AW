@@ -111,6 +111,9 @@ class ChallengeAuthResponse extends \Magento\Framework\App\Action\Action
 
         $directOrderParams = $this->checkoutSession->getDirectOrderParams();
         $threeDSecureParams = $this->checkoutSession->get3DschallengeData();
+        if(empty($threeDSecureParams)){
+            $threeDSecureParams = $this->checkoutSession->get3DS2Config();
+        }
         $this->checkoutSession->unsDirectOrderParams();
         $this->checkoutSession->uns3DschallengeData();
         try {

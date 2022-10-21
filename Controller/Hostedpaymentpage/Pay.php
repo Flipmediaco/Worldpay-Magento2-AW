@@ -55,7 +55,6 @@ class Pay extends \Magento\Framework\App\Action\Action
         if (!$this->_getStatus()->isInitialised() || !$this->worldpayhelper->isIframeIntegration()) {
             return $this->resultRedirectFactory->create()->setPath('checkout/cart', ['_current' => true]);
         }
-        $this->getResponse()->setNoCacheHeaders();
         return $this->pageFactory->create();
     }
 

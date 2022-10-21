@@ -85,7 +85,6 @@ class Challenge extends \Magento\Framework\App\Action\Action
                 $metadata
             );
         }
-        $this->getResponse()->setNoCacheHeaders();
         return $this->_pageFactory->create();
     }
 }

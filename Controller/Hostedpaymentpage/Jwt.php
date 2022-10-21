@@ -27,7 +27,6 @@ class Jwt extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
-        $this->getResponse()->setNoCacheHeaders();
         return $this->_pageFactory->create();
     }
 }

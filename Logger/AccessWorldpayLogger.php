@@ -13,7 +13,7 @@ class AccessWorldpayLogger extends \Monolog\Logger
      * @param string $message
      * @param array $context
      */
-    public function addRecord($level, $message, array $context = []) : bool
+    public function addRecord(int $level, string $message, array $context = [], $datetime = null): bool
     {
         $ObjectManager = \Magento\Framework\App\ObjectManager::getInstance();
         $logEnabled = (bool) $ObjectManager->get(

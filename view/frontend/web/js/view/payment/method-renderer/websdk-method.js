@@ -580,6 +580,7 @@ define(
 //                                     $("#SessionAlert").text("Session Expired. Please reload and enter the card details again.");fullScreenLoader.stopLoader(); $('#card-submit').prop('disabled', true);  }, 60000);         
 
                                 if (sessionhref) {
+                                    fullScreenLoader.startLoader();
                                     if(enteredCCType(document.getElementById("card-form").classList) == 'DINERS-SSL'
                                        || enteredCCType(document.getElementById("card-form").classList) == 'DANKORT-SSL'
                                        || !ccTypesEnabled[0].hasOwnProperty(enteredCCType(document.getElementById("card-form").classList))){
@@ -588,25 +589,26 @@ define(
                                     }
                                     if (self.threeDSEnabled()) {
                                         window.sessionHref = sessionhref;
-                                        fullScreenLoader.startLoader();
-                                        if(callDdc) {
-                                       //window.sessionHref = sessionhref;
-                                       self.getDdcUrl();
-                                       callDdc = false;
                                         
-                                    }
+                                        if(callDdc) {
+                                            //window.sessionHref = sessionhref;
+                                            //self.getDdcUrl();
+                                            callDdc = false;                                        
+                                        }
+                                    self.getDdcUrl(function(){
                                         window.addEventListener("message", function(event) {
-                                        //fullScreenLoader.startLoader();            
-                                            var data = JSON.parse(event.data);
-                                                //console.warn('Merchant received a message:', data);
-                                                if (data !== undefined && data.Status && window.sessionId !== data.SessionId) {
-                                                    window.sessionId = data.SessionId;
-                                                  fullScreenLoader.stopLoader();
-                                                  self.placeOrder();
-                                                  
-                                                }
-                                        }, false);
-                                        fullScreenLoader.stopLoader();
+                                            //fullScreenLoader.startLoader();            
+                                                var data = JSON.parse(event.data);
+                                                    //console.warn('Merchant received a message:', data);
+                                                    if (data !== undefined && data.Status && window.sessionId !== data.SessionId) {
+                                                        window.sessionId = data.SessionId;
+                                                      fullScreenLoader.stopLoader();
+                                                      self.placeOrder();
+                                                      
+                                                    }
+                                            }, false);
+                                    });                                        
+                                        
                                     }else{
                                         window.sessionHref = sessionhref;
                                         fullScreenLoader.stopLoader();
@@ -620,12 +622,11 @@ define(
                     }
                 );
             },
-            getDdcUrl : function () {
+            getDdcUrl : function (callback) {
                 var payload = {
                         cartId: quote.getQuoteId(),
                         paymentData: this.getData()
                     };
-                fullScreenLoader.startLoader();
                 storage.post(
                     urlBuilder.createUrl('/worldpay/payment/ddcrequest', {}),
                     JSON.stringify(payload),
@@ -633,7 +634,7 @@ define(
                 ).done(
                     function (response) {
                         createJwt();
-                        fullScreenLoader.stopLoader();
+                        callback();
                         
                     }
                 ).fail(
@@ -696,19 +697,21 @@ define(
                                     if (self.threeDSEnabled() ) {
                                         fullScreenLoader.startLoader();
                                         if (callDdc) {
-                                        self.getDdcUrl();
+                                        //self.getDdcUrl();
                                         callDdc = false;
                                         }
-                                         window.addEventListener("message", function(event) {
-                                            var data = JSON.parse(event.data);
-                                                //console.warn('Merchant received a message:', data);
-                                                if (data !== undefined && data.Status) {
-                                                    window.sessionId = data.SessionId;
-                                                  fullScreenLoader.stopLoader();
-                                                  self.placeOrder();
-                                                }
-                                        }, false);
-                                        fullScreenLoader.stopLoader();
+                                        self.getDdcUrl(function(){
+                                            window.addEventListener("message", function(event) {
+                                                var data = JSON.parse(event.data);
+                                                    //console.warn('Merchant received a message:', data);
+                                                    if (data !== undefined && data.Status) {
+                                                        window.sessionId = data.SessionId;
+                                                      fullScreenLoader.stopLoader();
+                                                      self.placeOrder();
+                                                    }
+                                            }, false);
+                                        });                                        
+                                        
                                     }else {
                                             fullScreenLoader.stopLoader();
                                              self.placeOrder();
@@ -732,19 +735,20 @@ define(
                     if (self.threeDSEnabled() ) {
                                         fullScreenLoader.startLoader();
                                         if (callDdc) {
-                                        self.getDdcUrl();
+                                        //self.getDdcUrl();
                                         callDdc = false;
                                         }
-                                         window.addEventListener("message", function(event) {
-                                            var data = JSON.parse(event.data);
-                                                //console.warn('Merchant received a message:', data);
-                                                if (data !== undefined && data.Status) {
-                                                    window.sessionId = data.SessionId;
-                                                  fullScreenLoader.stopLoader();
-                                                  self.placeOrder();
-                                                }
-                                        }, false);
-                                        fullScreenLoader.stopLoader();
+                                        self.getDdcUrl(function(){
+                                            window.addEventListener("message", function(event) {
+                                                var data = JSON.parse(event.data);
+                                                    //console.warn('Merchant received a message:', data);
+                                                    if (data !== undefined && data.Status) {
+                                                        window.sessionId = data.SessionId;
+                                                      fullScreenLoader.stopLoader();
+                                                      self.placeOrder();
+                                                    }
+                                            }, false);
+                                        });
                                     }else {
                                         fullScreenLoader.stopLoader();
                                         self.placeOrder();
